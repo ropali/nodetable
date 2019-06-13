@@ -1,0 +1,16 @@
+{
+  "name": "nodetable",
+  "version": "1.0.0",
+  "description": "A datatable wrapper to handle Datatable request for NodeJS MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "datatable",
+    "datatables",
+    "datatables-nodejs"
+  ],
+  "author": "ropali munshi",
+  "license": "ISC"
+}
