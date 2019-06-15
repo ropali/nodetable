@@ -1,7 +1,7 @@
 {
   "name": "nodetable",
   "version": "1.0.0",
-  "description": "A datatable wrapper to handle Datatable request for NodeJS MySQL",
+  "description": "A datatable helper package to handle Datatable server side processing for NodeJS with MySQL",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
