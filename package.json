@@ -1,6 +1,6 @@
 {
   "name": "nodetable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A datatable helper package to handle Datatable server side processing for NodeJS with MySQL",
   "main": "index.js",
   "scripts": {
