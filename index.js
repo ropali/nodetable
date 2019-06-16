@@ -195,7 +195,7 @@ class NodeTable {
   static isValidSQL (query) {
     const arr = query.toString().split(' ');
 
-    if (arr.length > 0 || arr.includes("SELECT") || arr.includes("select") ) {
+    if (arr.length > 1 || arr.includes("SELECT") || arr.includes("select") ) {
       return true
     }
 
