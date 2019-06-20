@@ -85,18 +85,9 @@ class NodeTable {
     return where;
   }
 
-  /**
-   * Perform the SQL queries needed for an server-side processing requested,
-   * utilising the helper functions of this class, limit(), order() and
-   * filter() among others. The returned array is ready to be encoded as JSON
-   * in response to an SSP request, or can be modified if needed before
-   * sending back to the client.
-   * @param callback  a callback function which is called at the end. It accepts two params
-   * err - An error, data - the generated data which is expected by the Datatable
-   */
-  output(callback) {
-    // Build SQL query string from the request
 
+  buildQuery () {
+    // Build SQL query string from the request
     const limit = this.limit();
     const order = this.order();
     const where = this.filter();
@@ -108,12 +99,21 @@ class NodeTable {
     }
 
 
-    let queryString = `SELECT ${NodeTable.pluck(this.columns, "db").join(", ")}
-                            FROM ${this.table}
-                            ${where}
-                            ${order}
-                            ${limit}`;
+    return `SELECT ${NodeTable.pluck(this.columns, "db").join(", ")} FROM ${this.table} ${where} ${order} ${limit}`;
+  }
 
+  /**
+   * Perform the SQL queries needed for server-side processing requested,
+   * utilizing the helper functions of this class, limit(), order() and
+   * filter() among others. The returned array is ready to be encoded as JSON
+   * in response to an SSP request, or can be modified if needed before
+   * sending back to the client.
+   * @param callback - a callback function which is called at the end. It accepts two params
+   * err - An error, data - the generated data which is expected by the Datatable
+   */
+  output(callback) {
+
+    const queryString = NodeTable.buildQuery()
     
     this.db.query(queryString, (err, results, fields) => {
       if (err) {

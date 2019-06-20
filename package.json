@@ -4,7 +4,7 @@
   "description": "A datatable helper package to handle Datatable server side processing for NodeJS with MySQL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
     "datatables-nodejs"
   ],
   "author": "ropali munshi",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
 }
