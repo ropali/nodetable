@@ -98,7 +98,6 @@ class NodeTable {
       this.table = `(${this.table})temp`
     }
 
-
     return `SELECT ${NodeTable.pluck(this.columns, "db").join(", ")} FROM ${this.table} ${where} ${order} ${limit}`;
   }
 
@@ -113,17 +112,19 @@ class NodeTable {
    */
   output(callback) {
 
-    const queryString = NodeTable.buildQuery()
+    const queryString = this.buildQuery()
     
     this.db.query(queryString, (err, results, fields) => {
       if (err) {
         // Let the client handle the error
         callback(new Error(err), null)
       }
+      
+      let where = this.filter()
 
       // Count the filtered records
       this.db.query(
-        `SELECT COUNT(${this.primaryKey}) AS filtered FROM ${this.table} ${where}`,
+        `SELECT COUNT(${this.primaryKey}) AS filtered FROM ${this.table} ${ where }`,
         (err, records, cols) => {
 
             if (err) {
